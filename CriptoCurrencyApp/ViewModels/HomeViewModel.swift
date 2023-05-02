@@ -7,12 +7,12 @@
 
 import Foundation
 import Combine
-
+import SwiftUI
 
 class HomeViewModel : ObservableObject {
     
     let dataManager : CryptoProtocol
-    
+    @Published var coins = [CoinModel]()
     init(dataManager : CryptoProtocol = DataManager.shared) {
         self.dataManager = dataManager
         fetchData()
@@ -20,8 +20,19 @@ class HomeViewModel : ObservableObject {
     
     func fetchData() {
         
-        dataManager.fetchData()
+        let coins = dataManager.fetchData()
         
+        switch coins {
+        case .success(let success):
+            self.coins = success
+            for coin in self.coins {
+                print("\(coin.name)")
+            }
+        case .failure(let failure):
+            let error = failure
+            print("Error :\(error.localizedDescription)")
+        }
+      
     }
     
 }

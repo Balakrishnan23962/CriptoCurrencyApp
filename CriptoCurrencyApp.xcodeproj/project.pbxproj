@@ -19,6 +19,8 @@
 		1520A5C029FBE6880097236B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520A5BF29FBE6880097236B /* DataManager.swift */; };
 		1520A5C229FBE6D90097236B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520A5C129FBE6D90097236B /* HomeViewModel.swift */; };
 		1520A5C429FBE7BB0097236B /* CryptoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520A5C329FBE7BB0097236B /* CryptoModel.swift */; };
+		15B9D5B32A00E75D00E1715D /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B9D5B22A00E75D00E1715D /* CoinModel.swift */; };
+		15B9D5B52A01013300E1715D /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B9D5B42A01013300E1715D /* Tools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		1520A5BF29FBE6880097236B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1520A5C129FBE6D90097236B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1520A5C329FBE7BB0097236B /* CryptoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoModel.swift; sourceTree = "<group>"; };
+		15B9D5B22A00E75D00E1715D /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
+		15B9D5B42A01013300E1715D /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 		1520A5AD29FBD5FA0097236B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				15B9D5B42A01013300E1715D /* Tools.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				1520A5C329FBE7BB0097236B /* CryptoModel.swift */,
+				15B9D5B22A00E75D00E1715D /* CoinModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,7 +242,9 @@
 				1520A5B629FBD7850097236B /* TopMoversItem.swift in Sources */,
 				1520A5C229FBE6D90097236B /* HomeViewModel.swift in Sources */,
 				1520A5C029FBE6880097236B /* DataManager.swift in Sources */,
+				15B9D5B52A01013300E1715D /* Tools.swift in Sources */,
 				1520A5BE29FBE6180097236B /* CriptoAPI.swift in Sources */,
+				15B9D5B32A00E75D00E1715D /* CoinModel.swift in Sources */,
 				1520A5C429FBE7BB0097236B /* CryptoModel.swift in Sources */,
 				1520A5BB29FBDC850097236B /* AllCoinView.swift in Sources */,
 				1520A59C29FBD4F30097236B /* CriptoCurrencyAppApp.swift in Sources */,

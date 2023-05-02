@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TopMoversView: View {
+    @EnvironmentObject var viewModel: HomeViewModel
     var body: some View {
         VStack(alignment: .leading){
             Section {

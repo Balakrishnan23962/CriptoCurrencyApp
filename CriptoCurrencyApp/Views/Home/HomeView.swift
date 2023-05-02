@@ -20,6 +20,7 @@ struct HomeView: View {
             .navigationTitle("Live Prices")
  
         }
+        .environmentObject(viewModel)
     }
 }
 

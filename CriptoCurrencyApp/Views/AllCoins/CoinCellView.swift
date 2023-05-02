@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct CoinCellView: View {
+    @State var coin : CoinModel
     var body: some View {
         HStack{
-            Text("1")
+            Text("\(coin.marketCapRank ?? 1)")
                 .font(.caption)
                 .foregroundColor(.gray)
             Image(systemName: "bitcoinsign.circle.fill")
@@ -20,18 +21,18 @@ struct CoinCellView: View {
                 .foregroundColor(.orange)
             
             VStack(alignment: .leading,spacing: 4){
-                Text("Bitcoin")
+                Text(coin.name)
                     .font(.subheadline)
-                Text("BTC")
+                Text(coin.symbol.uppercased())
                     .font(.caption)
                     .foregroundColor(.gray)
             }
             .padding(.leading,2)
             Spacer()
             VStack(alignment: .trailing,spacing: 4){
-                Text("$20.330.00")
+                Text("\(coin.currentPrice)")
                     .font(.subheadline)
-                Text("-5.60%")
+                Text("\(coin.priceChangePercentage24H)")
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -42,8 +43,8 @@ struct CoinCellView: View {
     }
 }
 
-struct CoinCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        CoinCellView()
-    }
-}
+//struct CoinCellView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CoinCellView(coin: <#CoinModel#>)
+//    }
+//}
