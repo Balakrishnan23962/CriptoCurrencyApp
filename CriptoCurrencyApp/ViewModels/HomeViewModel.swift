@@ -13,6 +13,7 @@ class HomeViewModel : ObservableObject {
     
     let dataManager : CryptoProtocol
     @Published var coins : [CoinModel] = []
+    @Published var topMovingCoins : [CoinModel] = []
     init(dataManager : CryptoProtocol = DataManager.shared) {
         self.dataManager = dataManager
         fetchData()
@@ -39,7 +40,10 @@ class HomeViewModel : ObservableObject {
                 self.dataManager.fetchData { coins in
                     switch coins {
                     case .success(let success):
-                        self.coins = success
+                        DispatchQueue.main.async {
+                            self.coins = success
+                            self.configureTopMovers()
+                        }
                     case .failure(let failure):
                         print("Error: \(failure)")
                     }
@@ -48,6 +52,11 @@ class HomeViewModel : ObservableObject {
             
         }
         
+    }
+    
+    func configureTopMovers() {
+        let topMovers = coins.sorted { $0.priceChangePercentage24H > $1.priceChangePercentage24H }
+        self.topMovingCoins = Array(topMovers.prefix(5))
     }
     
 }

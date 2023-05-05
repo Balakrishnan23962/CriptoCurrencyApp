@@ -14,8 +14,8 @@ struct TopMoversView: View {
             Section {
                 ScrollView(.horizontal){
                     HStack(spacing: 16) {
-                        ForEach(0..<5) { _ in
-                            TopMoversItem()
+                        ForEach(viewModel.topMovingCoins) { coin in
+                            TopMoversItem(coin: coin)
                         }
                     }
                 }
@@ -29,7 +29,9 @@ struct TopMoversView: View {
 }
 
 struct TopMoversView_Previews: PreviewProvider {
+    static let viewModel = HomeViewModel()
     static var previews: some View {
         TopMoversView()
+            .environmentObject(viewModel)
     }
 }
