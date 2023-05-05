@@ -12,27 +12,42 @@ import SwiftUI
 class HomeViewModel : ObservableObject {
     
     let dataManager : CryptoProtocol
-    @Published var coins = [CoinModel]()
+    @Published var coins : [CoinModel] = []
     init(dataManager : CryptoProtocol = DataManager.shared) {
         self.dataManager = dataManager
         fetchData()
     }
     
+//    func fetchData() {
+//
+//        let coins = dataManager.fetchData()
+//
+//        switch coins {
+//        case .success(let success):
+//            self.coins = success
+//        case .failure(let failure):
+//            print("Error: \(failure)")
+//        }
+//
+//    }
+    
     func fetchData() {
         
-        let coins = dataManager.fetchData()
-        
-        switch coins {
-        case .success(let success):
-            self.coins = success
-            for coin in self.coins {
-                print("\(coin.name)")
+        DispatchQueue.global(qos: .background).async {
+            
+            DispatchQueue.main.async {
+                self.dataManager.fetchData { coins in
+                    switch coins {
+                    case .success(let success):
+                        self.coins = success
+                    case .failure(let failure):
+                        print("Error: \(failure)")
+                    }
+                }
             }
-        case .failure(let failure):
-            let error = failure
-            print("Error :\(error.localizedDescription)")
+            
         }
-      
+        
     }
     
 }

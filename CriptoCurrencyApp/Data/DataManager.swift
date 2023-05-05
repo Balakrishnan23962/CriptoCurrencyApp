@@ -10,7 +10,9 @@ import Combine
 
 protocol CryptoProtocol {
     
-    func fetchData() -> Result<[CoinModel],Error>
+//    func fetchData(completion : @escaping ([CoinModel]) -> Void)
+    
+    func fetchData(completion: @escaping (Result<[CoinModel], Error>) -> Void)
     
 }
 
@@ -18,16 +20,34 @@ protocol CryptoProtocol {
 class DataManager : CryptoProtocol {
     
     static let shared = DataManager()
-    
-    func fetchData() -> Result<[CoinModel], Error> {
-        let coins = CryptoAPI.call.fetchData()
-        switch coins {
-        case .success(let success):
-            print("Success DataMAnager : \(success.count)")
-            return .success(success)
-        case .failure(let failure):
-            return .failure(failure)
+  
+   
+    func fetchData(completion: @escaping (Result<[CoinModel], Error>) -> Void) {
+        CryptoAPI.call.fetchData { coins in
+            switch coins {
+            case .success(let success):
+                completion(.success(success))
+            case .failure(let failure):
+                completion(.failure(failure))
+            }
         }
     }
+    
+ 
+    
+//    func fetchData() -> Result<[CoinModel], Error> {
+//        var result : Result<[CoinModel], Error>
+//
+//        let coins = CryptoAPI.call.fetchData()
+//
+//        switch coins {
+//        case .success(let success):
+//            result = .success(success)
+//        case .failure(let failure):
+//            result = .failure(failure)
+//        }
+//
+//        return result
+//    }
     
 }
